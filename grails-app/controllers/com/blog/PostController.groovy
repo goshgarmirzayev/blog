@@ -10,11 +10,14 @@ class PostController {
     static def springSecurityService
 
     def index() {
-        def query = params.q
         def posts
+        if (params.q) {
+        }
+        def query = params.q
         posts = Post.executeQuery("from com.blog.Post where content like '%" + query + "%'")
         if (posts) {
             [posts: posts]
+
         } else {
             flash.message = "Post Not found"
             posts = Post.list()
@@ -50,7 +53,7 @@ class PostController {
         [post: post]
     }
 
-
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def removePost() {
         postService.delete(params)
         flash.message = "Post succesfully deleted"
@@ -79,4 +82,5 @@ class PostController {
         comment.save(flush: true, failOnError: true)
         redirect(uri: '/post/detail/' + params.postId)
     }
+
 }

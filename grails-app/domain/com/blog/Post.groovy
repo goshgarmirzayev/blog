@@ -6,11 +6,10 @@ class Post {
     String title
     String content
     Date dateCreated
-    List<Comment> comments;
     static belongsTo = [author: User]
     static constraints = {
         title nullable: true, blank: true, maxSize: 20
-        content nullable: true,blank: true
+        content nullable: true, blank: true
     }
 
     static mapping = {

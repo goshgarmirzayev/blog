@@ -63,6 +63,7 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
         compile ":ckeditor:4.4.1.0"
         compile ":spring-security-core:1.2.7.3"
+        compile ":recaptcha:1.0.0"
 
     }
 }

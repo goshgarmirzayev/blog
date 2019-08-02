@@ -1,5 +1,6 @@
 package grailsprojects
 
+import com.blog.Comment
 import com.blog.Post
 
 class PostService {
@@ -17,9 +18,17 @@ class PostService {
     }
 
     def delete(params) {
+        deleteAllComments(params.id)
         def post = Post.get(params.id)
         post.delete()
 
     }
 
+    def deleteAllComments(id) {
+        def post = Post.get(id)
+        def comments = Comment.findAllByPost(post)
+        for (Comment comment : comments) {
+            comment.delete()
+        }
+    }
 }
