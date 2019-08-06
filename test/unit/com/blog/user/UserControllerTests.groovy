@@ -1,13 +1,15 @@
-package com.blog
+package com.blog.user
 
-import com.blog.home.HomeController
+
+
 import grails.test.mixin.*
+import org.junit.*
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(HomeController)
-class HomeControllerTests {
+@TestFor(UserController)
+class UserControllerTests {
 
     void testSomething() {
        fail "Implement me"

@@ -1,6 +1,9 @@
-package com.blog
+package com.blog.post
 
+import com.blog.Comment
+import com.blog.Post
 import grails.plugins.springsecurity.Secured
+import org.hibernate.QueryException
 
 
 class PostController {
@@ -10,39 +13,57 @@ class PostController {
     static def springSecurityService
 
     def index() {
-        def posts
-        if (params.q) {
-        }
-        def query = params.q
-        posts = Post.executeQuery("from com.blog.Post where content like '%" + query + "%'")
-        if (posts) {
-            [posts: posts]
+        def posts = Post.list()
+        [posts: posts]
 
-        } else {
-            flash.message = "Post Not found"
-            posts = Post.list()
-            [posts: posts]
+    }
+
+    def loadCurrentUserPost() {
+        def posts = Post.findAllByAuthor(springSecurityService.currentUser)
+        [posts: posts]
+
+    }
+
+    def search() {
+        try {
+            def posts = Post.executeQuery("from com.blog.Post where content like '%" + params.q + "%'")
+            println(posts)
+            if (posts) {
+                render(view: '/post/index', model: [posts: posts])
+
+            } else {
+                flash.message = "Post Not Found"
+                redirect(action: 'index')
+            }
+        } catch (QueryException) {
+            flash.message = "We cannot search for this keyword"
+            redirect(action: 'index')
         }
     }
 
+    def notFound() {
+
+    }
 
     def detail(Long id) {
         def post = Post.get(id)
-        def comments = Comment.list();
-        for (int i = 0; i < comments.size(); i++) {
-            if (comments.get(i).post.id != id) {
-                comments.remove(i)
-            }
-        }
-        println(comments)
         if (!post) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'post.label', default: 'Post'), id])
-            redirect(action: "detail")
-            return
+            redirect action: 'notFound'
+
+        } else {
+            def comments = Comment.list();
+            for (int i = 0; i < comments.size(); i++) {
+                if (comments.get(i).post.id != id) {
+                    comments.remove(i)
+                }
+            }
+            [comments: comments,
+             post    : post
+            ]
+
         }
-        [comments: comments,
-         post    : post
-        ]
+
 
     }
 

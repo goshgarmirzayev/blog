@@ -11,7 +11,7 @@ class PostService {
             post = new Post()
         }
         post?.title = params?.title
-        post?.content = params?.content
+        post?.content ="<span>"+params?.content+"</span>"
         post?.author = user
         post?.save(flush: true, failOnError: true)
         return post

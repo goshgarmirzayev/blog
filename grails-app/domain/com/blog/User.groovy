@@ -11,11 +11,12 @@ class User {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+    String avatarPath
 
     static constraints = {
         username blank: false, unique: true
         password blank: false
-
+        avatarPath nullable: true, maxSize: 130//2 meqabayt
     }
 
     static mapping = {

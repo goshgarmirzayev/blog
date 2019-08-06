@@ -1,8 +1,6 @@
 package com.blog
 
-
-
-import org.junit.*
+import com.blog.comment.CommentController
 import grails.test.mixin.*
 
 @TestFor(CommentController)

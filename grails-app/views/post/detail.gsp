@@ -20,25 +20,26 @@ margin-top: 70px">
 
                 <p>${post?.content}</p>
                 <br>
-                <g:if test="${com.blog.PostController.springSecurityService.currentUser == post.author}">
 
-                    <g:link controller="post" action="addPost" id="${post?.id}"
-                            class="btn btn-warning btn-sm">Edit</g:link>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                            data-target="#myModal">Delete</button>
+                <sec:ifLoggedIn>
+                    <g:if test="${com.blog.post.PostController.springSecurityService.currentUser == post.author}">
 
-                </g:if>
+                        <g:link controller="post" action="addPost" id="${post?.id}"
+                                class="btn btn-warning btn-sm">Edit</g:link>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#myModal">Delete</button>
+
+                    </g:if>
+                </sec:ifLoggedIn>
 
             </div>
         </div>
         <br>
         <sec:ifLoggedIn>
             <h3>Add Comment:</h3>
-
             <hr>
             <br>
             <g:form controller="post" action="addComment" class="form-group" method="post">
-            %{--    <input type="text" name="content" class="form-control">--}%
                 <textarea class="form-control" name="content"></textarea>
                 <input type="hidden" name="postId" value="${post.id}">
                 </br>
@@ -47,24 +48,21 @@ margin-top: 70px">
 
         </sec:ifLoggedIn>
 
+        <g:if test="${comments}">
+            <h3>Comments:</h3>
+            <g:each in="${comments}" var="comment">
+                <h6>${comment?.user?.fullname}</h6>
 
-        <h3>Comments:</h3>
-        <g:each in="${comments}" var="comment">
-            <h6>${comment?.user?.fullname}</h6>
+                <p style="margin-left: 20px;">${comment?.content}</p>
+                <hr>
+            </g:each>
 
-            <p style="margin-left: 20px;">${comment?.content}</p>
-            <hr>
-        </g:each>
+        </g:if>
+
     </div>
 </div>
 
-<!-Modal Code Start Here-!>
-
-
-<!-- Trigger the modal with a button -->
-
-
-<!-- Modal -->
+<!-- Modal Code Start Here-->
 <div class="modal fade" id="myModal" role="dialog" style="height: 200px;border-radius: 0px">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

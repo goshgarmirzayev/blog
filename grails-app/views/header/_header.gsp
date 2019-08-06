@@ -42,8 +42,6 @@
                     <a class="nav-link" href="${createLink(controller: 'post', action: 'addPost')}">Create new post</a>
                 </li>
             </sec:ifLoggedIn>
-
-
             <li class="nav-item active">
                 <a class="nav-link" href="#">About</a>
             </li>
@@ -58,17 +56,24 @@
                     <a class="nav-link" href="${createLink(controller: 'register', action: 'index')}">Sign Up</a>
                 </li>
             </sec:ifNotLoggedIn>
-            <sec:ifLoggedIn>
-                <li class="nav-item-active">
-                    <a class="nav-link" href="${createLink(controller: 'logout', action: 'index')}">Logout</a>
-                </li>
-            </sec:ifLoggedIn>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Profile Options
+                </a>
 
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"
+                       href="${createLink(controller: 'user', action: 'editProfile')}">Edit Profile</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
         </ul>
 
-        <g:form class="form-inline mt-2 mt-md-0" role="search" method="GET" controller="post" action="index">
+        <g:form class="form-inline mt-2 mt-md-0" role="search" method="GET" controller="post" action="search">
             <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search"
-                   value="">
+                   required="">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search"/>
         </g:form>
     </div>

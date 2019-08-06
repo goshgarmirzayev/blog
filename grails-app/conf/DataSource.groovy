@@ -13,19 +13,19 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/blog"
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create"
             url = "jdbc:mysql://localhost:3306/blog"
         }
     }
     production {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create"
             url = "jdbc:mysql://localhost:3306/blog"
             pooled = true
             properties {

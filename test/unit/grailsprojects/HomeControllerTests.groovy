@@ -1,6 +1,6 @@
 package grailsprojects
 
-import com.blog.HomeController
+import com.blog.home.HomeController
 import grails.test.mixin.*
 
 /**

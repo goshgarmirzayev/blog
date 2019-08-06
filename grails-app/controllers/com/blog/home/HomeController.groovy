@@ -1,4 +1,4 @@
-package com.blog
+package com.blog.home
 
 
 class HomeController {
@@ -7,5 +7,8 @@ class HomeController {
 
     def home() {
         
+    }
+    def error(){
+
     }
 }

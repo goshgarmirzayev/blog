@@ -1,6 +1,7 @@
 package com.blog
 
-import java.awt.Image
+import javax.annotation.Resource
+
 
 class Post {
     String title

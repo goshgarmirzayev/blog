@@ -1,8 +1,6 @@
 package com.blog
 
-
-
-import org.junit.*
+import com.blog.post.PostController
 import grails.test.mixin.*
 
 @TestFor(PostController)

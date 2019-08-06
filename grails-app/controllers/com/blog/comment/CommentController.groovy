@@ -1,5 +1,6 @@
-package com.blog
+package com.blog.comment
 
+import com.blog.Comment
 import org.springframework.dao.DataIntegrityViolationException
 
 class CommentController {

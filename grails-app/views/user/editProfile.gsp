@@ -20,20 +20,22 @@
         ${flash.message}
     </g:if>
     <g:form class="form-group col col-md-4 mx-auto" controller="register" action="saveUser">
-        <label for="fullname">Fullname*</label>
+        <label for="fullname">New Fullname*</label>
         <input name="fullname" type="text" id="fullname" class="form-control" value="${user?.fullname}" required>
         <br/>
-        <label for="username">Username*</label>
+        <label for="username">New Username*</label>
         <input name="username" type="text" id="username" class="form-control" required value="${user?.username}">
         <br/>
-        <label for="password">Password*</label>
+        <label for="password">New Password*</label>
         <input name="password" type="password" id="password" class="form-control" value="${user?.password}" required>
         <br/>
-        <label for="repass">Retype Password*</label>
+        <label for="repass">Retype new password*</label>
         <input name="repass" type="password" id="repass" class="form-control" required>
         <br/>
         <input type="file" name="avatar">
-        <br>
+        <br/>
+        <br/>
+
         <input type="submit" class="btn btn-primary">
     </g:form>
 

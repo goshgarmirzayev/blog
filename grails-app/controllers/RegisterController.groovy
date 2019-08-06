@@ -1,4 +1,3 @@
-import com.blog.Role
 import com.blog.User
 
 class RegisterController {
