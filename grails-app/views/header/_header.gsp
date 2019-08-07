@@ -64,9 +64,9 @@
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"
-                       href="${createLink(controller: 'user', action: 'editProfile')}">Edit Profile</a>
+                       href="${createLink(controller: 'user', action: 'profile')}">View Profile</a>
                     <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="${createLink(controller: 'logout', action: 'index')}">Logout</a>
                 </div>
             </li>
         </ul>

@@ -1,20 +1,20 @@
 package grailsprojects
 
-import com.blog.Role
 import com.blog.User
-import com.blog.UserRole
+
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+
 
 class UserService {
 
-    def springSecurityService
 
-    def saveUser(params) {
-        byte[] avatar = params.avatar
-
-        FileWriter fr = new FileWriter(new File("images/" + params.avatar))
-
-        fr.write(avatar)
-        fr.close()
+    def saveUser(params, byte[] data) {
+        def path = ""
+        if (data) {
+            path = generateAvatarPath()
+        }
         def user = new User(
                 username: params.username,
                 password: params.password,
@@ -23,9 +23,9 @@ class UserService {
                 accountExpired: false,
                 passwordExpired: false,
                 fullname: params.fullname,
-                avatarPath: "images/ssl")
+                avatarPath: path)
         user.save(flush: true, failOnError: true)
-
+        writeAvatarToFile(path, data)
     }
 
     def edit(params, User user) {
@@ -34,4 +34,21 @@ class UserService {
         user.password = params.password
         user.save(flush: true, failOnError: true)
     }
+
+    def generateAvatarPath() {
+        def path = UUID.randomUUID().toString() + ".jpg"
+        return path
+    }
+
+    def writeAvatarToFile(String path, byte[] data) {
+        if (data) {
+            File f = new File(path)
+            FileOutputStream fos = new FileOutputStream(f)
+            fos.write(data)
+            fos.close()
+            Path move = Files.move(Paths.get(path), Paths.get("web-app/images/" + path))
+        }
+    }
+
+
 }

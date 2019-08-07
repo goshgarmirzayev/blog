@@ -18,7 +18,7 @@
                                         post?.content?.take(100) + '...' : post?.content}
                                 </p>
                             </div>
-                            <a href="${createLink(action: 'detail', id: post?.id)}"
+                            <a href="${createLink(controller: 'post', action: 'detail', id: post?.id)}"
                                class="btn btn-outline-success">More
                             </a>
                         </div>
@@ -28,5 +28,12 @@
 
         </g:each>
     </g:if>
+    <g:else>
+        <center>
+            <h3 class="mx-auto">You don't have any post</h3>
+            <a href="${createLink(controller: 'post', action: 'addPost')}"
+               class="btn btn-outline-primary">Create your own post</a>
+        </center>
+    </g:else>
 
 </div>
