@@ -16,6 +16,7 @@
 # logs
 /stacktrace.log
 /test/reports
+/test/unit
 /logs
 
 # project release file
@@ -32,4 +33,4 @@
 # "temporary" build files
 /target
 /.idea
-/test
+
