@@ -2,7 +2,6 @@ package com.blog.user
 
 import com.blog.Post
 import grails.plugins.springsecurity.Secured
-import org.apache.catalina.User
 
 class UserController {
     def springSecurityService
@@ -13,7 +12,7 @@ class UserController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def profile() {
         def user = springSecurityService.currentUser
-        def posts = Post.findByAuthor(springSecurityService.currentUser)
+        def posts = Post.findAllByAuthor(springSecurityService.currentUser)
         [posts: posts,
          user : user
         ]
@@ -34,15 +33,31 @@ class UserController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def edit() {
+        def file = request.getFile("avatar")
+        byte[] data = file.getBytes()
         def user = springSecurityService.currentUser
         String password = params.password
         String repassword = params.repass
         if (password.equals(repassword)) {
-            userService.edit(params, user)
+            userService.edit(params, user, data)
             redirect action: 'profile'
         } else {
             flash.message = "Passwords don't matched"
             redirect(action: 'editProfile')
+        }
+    }
+
+    def delete() {
+        def user = springSecurityService.currentUser
+        println(user.username)
+        println(params.username)
+        if (user.username.equals(params.username)) {
+            redirect uri: "logout/"
+            userService.deleteUser(user)
+            flash.message = "Your account succesfully delete."
+        } else {
+            flash.message = "Password is incorrect"
+            redirect action: 'profile'
         }
     }
 

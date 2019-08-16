@@ -7,7 +7,7 @@
     %{--    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}%
     %{--    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>--}%
     %{--    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>--}%
-    <title>Our Blog's post</title>
+    <title>Posts in Medium</title>
 </head>
 
 <body>
@@ -24,8 +24,8 @@
                     <h4>Writer:${post?.author?.fullname}</h4>
 
                     <div class="content">
-                        <p>${post?.content?.length() > 100 ?
-                                post?.content?.take(100) + '...' : post?.content}
+                        <p>${post?.content?.length() > 300 ?
+                                post?.content?.take(300) + '...' : post?.content}
                         </p>
                     </div>
                     <a href="${createLink(action: 'detail', id: post?.id)}"

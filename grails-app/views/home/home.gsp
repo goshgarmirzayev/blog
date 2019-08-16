@@ -8,29 +8,59 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-%{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">--}%
-%{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--}%
-%{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>--}%
+    %{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">--}%
+    %{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--}%
+    %{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>--}%
     <title>Home</title>
 </head>
 
 <body>
-<g:render template="/header/header"></g:render>
+<g:render template="/header/header"/>
+<g:render template="/messages/message"/>
 
 <div class="container">
     <div class=" card col col-md-12" style="color: black; margin-top: 70px;">
         <div class="card-title">
-            <center><div class="card-title">Lorem Impsum</div></center>
+            <center><div class="card-title"><h2>What is the Medium?</h2></div></center>
         </div>
         <hr>
 
         <div class="card-body"><p
-                class="multiline-text">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-            Where does it come from? Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-        </div>
+                class="multiline-text font-weight-bold">
 
+            A blog (shortening of “weblog”) is an online journal or informational website displaying information in the reverse chronological order, with latest posts appearing first.
+            It is a platform where a writer or even a group of writers share their views on an individual subject.
+
+            <center>
+                <h2>What is the purpose of this  blog?</h2>
+            </center>
+            There are many reasons for starting a personal blog and only a handful of strong ones for business blogging.
+            Blogging for business, projects, or anything else that might bring you money has a very straightforward purpose – to rank your website higher in Google SERPs, a.k.a. increase your visibility.
+            <br/>
+            As a business, you rely on consumers to keep buying your products and services.
+            <br/>
+
+            As a new business, you rely on blogging to help you get to these consumers and grab their attention. Without blogging, your website would remain invisible, whereas running a blog makes you searchable and competitive.
+            <br/>
+
+            So, the main purpose of a blog is to connect you to the relevant audience.
+            <br/>
+
+            Another one is to boost your traffic and send quality leads to your website.
+            <br/>
+
+            The more frequent and better your blog posts are, the higher the chances for your website to get discovered and visited by your target audience.
+            <br/>
+
+            Which means, a blog is an effective lead generation tool. Add a great call to action (CTA), and it will convert your website traffic into high-quality leads.
+            <br/>
+
+            But a blog also allows you to showcase your authority and build a brand.
+            <br/>
+
+            When you use your niche knowledge for creating informative and engaging posts, it builds trust with your audience. Great blogging makes your business looks more credible, which is especially important if your brand is still young and fairly unknown. It ensures presence and authority at the same time.
+        </p>
+        </div>
     </div>
 </div>
 </body>

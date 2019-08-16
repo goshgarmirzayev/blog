@@ -14,7 +14,12 @@ class PostController {
 
     def index() {
         def posts = Post.list()
-        [posts: posts]
+        if(posts){
+            [posts: posts]
+        }else{
+            flash.message="This blog don't have any post."
+        }
+
 
     }
 

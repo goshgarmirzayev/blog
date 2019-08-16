@@ -1,5 +1,7 @@
 package grailsprojects
 
+import com.blog.Comment
+import com.blog.Post
 import com.blog.User
 
 import java.nio.file.Files
@@ -28,10 +30,17 @@ class UserService {
         writeAvatarToFile(path, data)
     }
 
-    def edit(params, User user) {
+    def edit(params, User user, byte[] data) {
         user.username = params.username
         user.fullname = params.fullname
         user.password = params.password
+        deleteUserAvatar(user.avatarPath)
+        user.avatarPath = ""
+        if (data) {
+            user.avatarPath = generateAvatarPath()
+        }
+
+        writeAvatarToFile(user.avatarPath, data)
         user.save(flush: true, failOnError: true)
     }
 
@@ -50,5 +59,37 @@ class UserService {
         }
     }
 
+    def deleteUserAvatar(String path) {
+        try {
+            Path delete = Files.delete(Paths.get("web-app/images/" + path))
+        } catch (IOException e) {
+            println("User avatar not found")
+        }
+    }
+
+    def deleteUser(User user) {
+
+        deleteUserComments(user)
+        deleteUserAvatar(user.avatarPath)
+        deleteUserPosts(user)
+        user.delete(flush: true)
+
+
+
+    }
+
+    def deleteUserComments(User user) {
+        def comments = Comment.findAllByUser(user)
+        for (Comment comment : comments) {
+            comment.delete()
+        }
+    }
+
+    def deleteUserPosts(User user) {
+        def posts = Post.findAllByAuthor(user)
+        for (Post post : posts) {
+            post.delete()
+        }
+    }
 
 }

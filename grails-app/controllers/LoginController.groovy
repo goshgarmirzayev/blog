@@ -18,6 +18,7 @@ class LoginController {
     /**
      * Dependency injection for the authenticationTrustResolver.
      */
+
     def authenticationTrustResolver
 
     /**

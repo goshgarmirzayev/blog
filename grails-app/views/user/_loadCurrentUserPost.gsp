@@ -14,8 +14,8 @@
                             <h4>Writer:${post?.author?.fullname}</h4>
 
                             <div class="content">
-                                <p>${post?.content?.length() > 100 ?
-                                        post?.content?.take(100) + '...' : post?.content}
+                                <p>${post?.content?.length() > 300 ?
+                                        post?.content?.take(300) + '...' : post?.content}
                                 </p>
                             </div>
                             <a href="${createLink(controller: 'post', action: 'detail', id: post?.id)}"
